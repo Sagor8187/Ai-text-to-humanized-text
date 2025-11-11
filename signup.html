@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../dist/output.css">
+  <script src="./signup.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Sign-up</title>
+</head>
+<body class="bg-gray-50 p-4 ">
+
+  <!-- Sign-up Modal -->
+  <div id="signupModal" class=" mt-5 mb-5 inset-0 bg-gray-100 bg-opacity-50 flex justify-center items-center p-4  ">
+    <div class="bg-gray-100 rounded-2xl w-full max-w-md sm:max-w-sm md:max-w-md lg:max-w-lg p-6 sm:p-8 shadow-lg ">
+      
+      <!-- Heading -->
+      <h2 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-center">Create an Account</h2>
+      
+      <!-- Form -->
+      <form id="signupForm" class="space-y-4">
+        <div class="space-y-2">
+          <label for="username" class="block text-gray-700 font-medium text-sm sm:text-base">User Name</label>
+          <input type="text" id="username" placeholder="Name" required
+            class="w-full border border-gray-500 rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base focus:ring-2 focus:ring-green-400 focus:outline-none">
+          <span id="usernameError" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div class="space-y-2">
+          <label for="number" class="block text-gray-700 font-medium text-sm sm:text-base">Mobile Number</label>
+          <input type="numbers" id="numbers" placeholder="123xxxxxxx"
+            class="w-full border border-gray-500 rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base focus:ring-2 focus:ring-green-400 focus:outline-none">
+          <span id="numberError" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div class="space-y-2">
+          <label for="email" class="block text-gray-700 font-medium text-sm sm:text-base">Email</label>
+          <input type="emails" id="email" placeholder="Email" required
+            class="w-full border border-gray-500 rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base focus:ring-2 focus:ring-green-400 focus:outline-none">
+          <span id="emailError" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div class="space-y-2">
+          <label for="password" class="block text-gray-700 font-medium text-sm sm:text-base">Password</label>
+          <input type="password" id="password" placeholder="Password" required
+            class="w-full border border-gray-500 rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base focus:ring-2 focus:ring-green-400 focus:outline-none">
+          <span id="passwordError" class="text-red-500 text-sm"></span>
+        </div>
+
+        <div class="space-y-2">
+          <label for="confirm-password" class="block text-gray-700 font-medium text-sm sm:text-base">Confirm Password</label>
+          <input type="password" id="confirm-password" placeholder="Confirm Password" required
+            class="w-full border border-gray-500 rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base focus:ring-2 focus:ring-green-400 focus:outline-none">
+          <span id="confirmPasswordError" class="text-red-500 text-sm"></span>
+        </div>
+
+       <div id="loader" class="hidden flex items-center justify-center space-x-2">
+        <div class="spinner w-5  h-5 border-4 border-t-blue-500 border-gray-300 rounded-full animate-spin"></div>
+        <span class="text-blue-500 font-semibold">Loading...</span>
+      </div>
+
+
+        <div id="result" class="text-green-600 text-center font-semibold w-full px-3 sm:px-4 py-2 text-sm sm:text-base focus:ring-2 focus:ring-green-400 focus:outline-none hidden"></div>
+        <div id="error" class="text-center text-red-600 font-semibold w-full px-3 sm:px-4 py-2 text-sm sm:text-base focus:ring-2 focus:ring-green-400 focus:outline-none hidden"></div>
+
+        <button type="submit"
+          class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg text-sm sm:text-base transition">
+          Sign Up
+        </button>
+      </form>
+
+        <!-- Sign Up Button -->
+         
+        
+
+        <!-- Divider -->
+        <div class="flex items-center my-4">
+          <div class="flex-grow border-t border-gray-300"></div>
+          <span class="px-2 text-gray-500 text-sm sm:text-base">or continue with</span>
+          <div class="flex-grow border-t border-gray-300"></div>
+        </div>
+
+        <!-- Google Button -->
+        <button id="google" type="button"
+          class="flex items-center justify-center w-full border border-gray-300 rounded-lg py-2 hover:bg-gray-100 transition text-sm sm:text-base">
+          <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" class="w-5 h-5 mr-2">
+          <span class="text-gray-700 font-medium">Continue with Google</span>
+        </button>
+
+      
+    </div>
+  </div>
+
+</body>
+</html>
