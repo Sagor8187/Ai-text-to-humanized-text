@@ -1,0 +1,355 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./humaize.js" defer></script>
+    <script src="./app.js " defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Natural Writer</title>
+  </head>
+  <body class="p-0 m-0 box-border font-sans">
+    <header class="flex justify-between items-center px-4 md:px-5 py-4">
+      <div class="flex items-center space-x-2">
+        <img class="h-6 md:h-8" src="./img/bg img.png" alt="Natural Writer Logo" />
+        <p class="text-lg md:text-xl font-bold ml-1">Natural Writer</p>
+      </div>
+      <nav class="hidden md:flex items-center md:ml-12">
+        <ul class="flex space-x-4">
+          <li><a class="text-base font-semibold hover:underline text-slate-700 cursor-pointer" href="#">AI Humanizer</a></li>
+          <li><a class="text-base font-semibold hover:underline text-slate-700 cursor-pointer" href="#">Blog</a></li>
+          <li><a class="text-base font-semibold hover:underline text-slate-700 cursor-pointer" href="#">Contact</a></li>
+          <li><a class="text-base font-semibold hover:underline text-slate-700 cursor-pointer" href="#">Pricing</a></li>
+        </ul>
+      </nav>
+      <div class="flex items-center space-x-2 " id="navlist" >
+        <button onclick="window.location.href='login.html'"  class="border pt-1.5 pb-1.5 px-4 rounded-lg text-sm md:text-base hover:bg-gray-100 transition duration-300" id="login">Log in</button>
+        <button onclick="window.location.href='login.html'"  class="text-white font-semibold pt-1.5 pb-1.5 px-4 rounded-lg text-sm md:text-base bg-green-500 hover:bg-green-600 transition duration-300" id="free" >Try for free</button>
+      </div>
+    </header>
+
+    <section class="bg-gradient-to-b from-green-200 via-orange-100 to-white flex flex-col items-center py-10 md:py-20 px-4 md:px-16">
+      <div class="bg-white rounded-full px-3 py-1 text-center w-full max-w-[300px]">
+        <h1 class="text-xs md:text-sm font-semibold bg-gradient-to-r from-orange-400 to-green-600 bg-clip-text text-transparent">
+          TRUSTED BY 350,000+ USERS
+        </h1>
+      </div>
+      <h1 class="text-3xl md:text-4xl text-center mt-6 font-semibold leading-tight">Humanize AI Text, Start Free Today</h1>
+      <p class="text-base md:text-lg text-center text-gray-500 mt-3 px-4 max-w-xl">Bypass detectors instantly, no risk, no payment needed</p>
+      <button onclick="window.location.href='login.html'"  class="pt-3 pb-3 mt-5 px-8 rounded-xl text-lg md:text-xl font-semibold text-white bg-green-500 hover:bg-green-600 transition duration-300 w-full max-w-[280px]" id="frees">
+        Try for free
+      </button>
+      <p class="text-center text-gray-500 mt-2 text-sm md:text-base">No credit card required</p>
+      <div class="bg-white rounded-2xl shadow-lg p-5 md:p-8 mx-auto mt-10 w-full max-w-6xl">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-3">
+          <h2 class="text-lg md:text-xl font-semibold text-gray-700 mb-2 md:mb-0">Your Text</h2>
+            <div class="flex justify-between bg-gray-50 rounded-b-md p-2 rounded-t-md gap-8  text-center items-center">
+              <div class="text-left text-sm ">
+                <h1 class="font-bold ">My Style</h1>
+                <p class="text-gray-700">Text sound like you</p>
+              </div>
+              <div>
+                <button class="bg-green-500 text-white rounded-b-lg text-center items-center rounded-t-md p-2 hover:bg-green-700">Upgrade</button>
+              </div>
+            </div>
+          </div>
+            <div class="relative flex items-start gap-4">
+              <!-- Textarea wrapper -->
+              <div id="textareaWrapper" class="relative w-full transition-all duration-500 ease-in-out">
+                <textarea id="textarea"
+                  placeholder="Paste your text here..."
+                  class="w-full h-[24rem] md:h-[28rem] rounded-lg px-3 py-2 resize-none border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-500 ease-in-out"
+                ></textarea>
+                <button id="btn" class="absolute top-1/2 right-5/12 bg-white text-green-500 font-semibold px-5 py-2 rounded-xl shadow-lg border border-gray-200 hover:bg-gray-50 transition">
+                  <i class="fa-solid fa-paste"></i> Paste Text
+                </button>
+              </div>
+
+              <!-- Hidden div initially -->
+              <div id="textDisplay" class="h-[24rem] md:h-[28rem] w-0 p-3 border border-gray-300 rounded-lg overflow-y-auto transition-all duration-500 ease-in-out opacity-0">
+                
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex flex-col md:flex-row justify-between items-center mt-3">
+              <p class="text-sm md:text-base text-gray-400 mb-2 md:mb-0"><span id="wordCount">0</span> / 500 words</p>
+              <div class="flex flex-col md:flex-row gap-2 w-full md:w-auto">
+                <button id="checkai" class="px-5 md:px-8 py-2 md:py-3 rounded-lg bg-green-100 text-green-300 font-semibold hover:bg-slate-200 hover:text-black transition-all text-sm md:text-base w-full md:w-auto">
+                  Check for AI
+                </button>
+                <button id="humanizeBtn" class="px-5 md:px-8 py-2 md:py-3 rounded-lg bg-green-300 text-white font-semibold hover:bg-green-500 transition-all text-sm md:text-base w-full md:w-auto">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Humanize
+                </button>
+              </div>
+            </div>
+
+      </div>
+    </section>
+
+    <section class="bg-white py-10 md:py-14 px-4 md:px-16 text-center">
+      <h2 class="text-xl md:text-2xl font-bold">Bypass AI content detectors</h2>
+      <div class="flex flex-wrap justify-center items-center gap-5 md:gap-10 mt-6">
+        <img class="h-6 md:h-20" src="./img/turnitin.webp" alt="Turnitin" />
+        <img class="h-6 md:h-20" src="./img/copyleaks.webp" alt="Copyleaks" />
+        <img class="h-6 md:h-20" src="./img/zerogpt.webp" alt="ZeroGPT" />
+        <img class="h-6 md:h-20" src="./img/quillbot.webp" alt="Quillbot" />
+        <img class="h-6 md:h-20" src="./img/grammarly.webp" alt="Grammarly" />
+      </div>
+    </section>
+
+    <section class="bg-white py-10 md:py-14 px-4 md:px-16 text-center">
+      <h2 class="text-2xl md:text-4xl font-semibold">Humanize AI Writing in 3 Simple Steps</h2>
+      <p class="text-base md:text-lg text-gray-500 mt-3">Perfect for essays, assignments, blog posts and research papers</p>
+      <div class="flex flex-col md:flex-row justify-center items-stretch mt-10 gap-6 md:gap-10">
+        <div class="shadow-lg p-5 rounded-2xl border border-transparent hover:border-green-400 transition-all duration-300 flex-1 flex flex-col items-center">
+          <img class="h-20 md:h-36 mx-auto" src="./img/step1.webp" alt="Step 1: Paste Your Text" />
+          <div class="bg-green-100 text-green-400 w-20 text-center font-semibold text-xs md:text-sm p-1 mt-3 rounded-full">STEP 1</div>
+          <h3 class="font-bold text-lg md:text-2xl mt-2">Paste Your Text</h3>
+          <p class="text-sm md:text-base text-gray-500 mt-1">Paste any content — homework, assignment, or AI-generated draft</p>
+        </div>
+        <div class="shadow-lg p-5 rounded-2xl border border-transparent hover:border-green-400 transition-all duration-300 flex-1 flex flex-col items-center">
+          <img class="h-20 md:h-36 mx-auto" src="./img/step2.webp" alt="Step 2: Check AI Score" />
+          <div class="bg-green-100 text-green-400 w-20 text-center font-semibold text-xs md:text-sm p-1 mt-3 rounded-full">STEP 2</div>
+          <h3 class="font-bold text-lg md:text-2xl mt-2">Check AI Score</h3>
+          <p class="text-sm md:text-base text-gray-500 mt-1">See how much of your text is considered human-written</p>
+        </div>
+        <div class="shadow-lg p-5 rounded-2xl border border-transparent hover:border-green-400 transition-all duration-300 flex-1 flex flex-col items-center">
+          <img class="h-20 md:h-36 mx-auto" src="./img/step3.webp" alt="Step 3: Humanize Text" />
+          <div class="bg-green-100 text-green-400 w-20 text-center font-semibold text-xs md:text-sm p-1 mt-3 rounded-full">STEP 3</div>
+          <h3 class="font-bold text-lg md:text-2xl mt-2">Humanize Text</h3>
+          <p class="text-sm md:text-base text-gray-500 mt-1">Rewrite your text to sound 100% human-written and pass AI detection</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-10 md:py-14 px-4 md:px-16">
+      <div class="flex flex-col md:flex-row justify-center items-center mt-10 gap-6 md:gap-12">
+        <div class="md:w-1/2">
+          <h3 class="text-lg md:text-2xl font-bold mb-3">Built on Science,<br class="hidden md:inline-block" /> Powered by Precision</h3>
+          <p class="text-sm md:text-base text-gray-500">
+            Our rewriting engine is trained on over 1.2 million samples of academic writing, essays, and AI-generated text. Using advanced linguistic modeling, we analyze syntax, tone, and word patterns commonly flagged by detection systems.
+          </p>
+        </div>
+        <div class="md:w-1/2">
+          <img class="h-28 md:h-56 mx-auto" src="./img/feature1.webp" alt="Science and Precision" />
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-10 md:py-14 px-4 md:px-16">
+      <div class="flex flex-col-reverse md:flex-row justify-center items-center mt-10 gap-6 md:gap-12">
+        <div class="md:w-1/2">
+          <img class="h-28 md:h-56 mx-auto" src="./img/feature2.webp" alt="Writers Worldwide" />
+        </div>
+        <div class="md:w-1/2">
+          <h3 class="text-lg md:text-2xl font-bold mb-3">Trusted by 350,000+<br class="hidden md:inline-block" /> Writers Worldwide</h3>
+          <p class="text-sm md:text-base text-gray-500">
+            We test every rewrite against leading detection tools like GPTZero, Turnitin, ZeroGPT, Quillbot and more. Our system is updated weekly to adapt to new detection methods and eliminate flagged patterns like burstiness, perplexity, and unnatural phrasing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-10 md:py-14 px-4 md:px-16">
+      <div class="flex flex-col md:flex-row justify-center items-center mt-10 gap-6 md:gap-12">
+        <div class="md:w-1/2">
+          <h3 class="text-lg md:text-2xl font-bold mb-3">Versatile for every need</h3>
+          <p class="text-sm md:text-base text-gray-500">
+            Students polish their writing to sound more natural, marketers improve content for better engagement and SEO, and businesses send emails that feel personal — not robotic. Natural Write adapts to each use case, delivering clear, human-sounding text that reads like it was written by you.
+          </p>
+        </div>
+        <div class="md:w-1/2">
+          <img class="h-28 md:h-56 mx-auto" src="./img/feature3.webp" alt="Versatile Use Cases" />
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-10 md:py-14 px-4 md:px-16 text-center">
+      <h2 class="text-xl md:text-3xl font-bold">Supporting writers at top institutions</h2>
+      <div class="flex flex-wrap justify-center items-center mt-6 gap-5 md:gap-10">
+        <img class="h-8 md:h-12" src="./img/harvard.webp" alt="Harvard" />
+        <img class="h-8 md:h-12" src="./img/oregon.webp" alt="Oregon" />
+        <img class="h-8 md:h-12" src="./img/leeds.webp" alt="Leeds" />
+        <img class="h-8 md:h-12" src="./img/ataneo.webp" alt="Ateneo" />
+      </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-white via-green-50 to-white py-10 md:py-14 px-4 md:px-16">
+      <h2 class="text-2xl md:text-4xl font-bold text-center">What our users say</h2>
+      <div class="flex flex-col md:flex-row justify-center mt-6 gap-6">
+        <div class="bg-white p-5 rounded-2xl shadow-lg w-full md:w-1/3">
+          <p class="text-4xl md:text-6xl text-green-500 font-bold">“</p>
+          <p class="text-base md:text-lg mt-3">“NaturalWrite helped me humanize AI text from ChatGPT in seconds. It made my writing sound real and passed Turnitin easily. This tool saved my grade.”</p>
+          <p class="text-xs md:text-sm text-gray-500 mt-6">Julia K., Student</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl shadow-lg w-full md:w-1/3">
+          <p class="text-4xl md:text-6xl text-green-500 font-bold">“</p>
+          <p class="text-base md:text-lg mt-3">“I’ve tried several tools to bypass AI detectors, but nothing compares to NaturalWrite. It’s fast, accurate, and the free humanize AI text feature is a lifesaver.”</p>
+          <p class="text-xs md:text-sm text-gray-500 mt-6">Liam R., Content Writer</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl shadow-lg w-full md:w-1/3">
+          <p class="text-4xl md:text-6xl text-green-500 font-bold">“</p>
+          <p class="text-base md:text-lg mt-3">“The best thing about NaturalWrite? I can humanize my text and rewrite AI drafts without losing quality. It feels like a real editor polished it.”</p>
+          <p class="text-xs md:text-sm text-gray-500 mt-6">Liam R., Content Writer</p>
+        </div>
+      </div>
+    </section>
+
+      <section class="bg-white py-10 md:py-14 px-4 md:px-16">
+        <h2 class="text-xl md:text-3xl font-bold text-center">FAQ</h2>
+        <div class="flex flex-col items-center mt-6">
+          <div class="w-full max-w-xl">
+
+            <!-- FAQ 1 -->
+            <div class="faq-item border-b border-gray-300">
+              <div class="flex justify-between items-center text-sm md:text-base py-3 cursor-pointer">
+                <button class="text-left">How does Natural Write work?</button>
+                <button><i class="fa-solid fa-chevron-down text-gray-600 transition-transform duration-300"></i></button>
+              </div>
+              <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out text-gray-600">
+                <p class="pb-3 pt-2">Copy your text, paste it into Natural Write — get a natural, human result that feels like you wrote it yourself.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item border-b border-gray-300">
+              <div class="flex justify-between items-center text-sm md:text-base py-3 cursor-pointer">
+                <button class="text-left">Does Natural Write bypass Turnitin and other AI checkers?</button>
+                <button><i class="fa-solid fa-chevron-down text-gray-600 transition-transform duration-300"></i></button>
+              </div>
+              <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out text-gray-600">
+                <p class="pb-3 pt-2">Yes. Our humanizer is built to bypass all major AI detectors, including Turnitin, GPTZero, ZeroGPT, Copyleaks, QuillBot, Grammarly, and more. After rewriting, your content is 100% human-written and won’t get flagged.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item border-b border-gray-300">
+              <div class="flex justify-between items-center text-sm md:text-base py-3 cursor-pointer">
+                <button class="text-left">How much does Natural Write cost?</button>
+                <button><i class="fa-solid fa-chevron-down text-gray-600 transition-transform duration-300"></i></button>
+              </div>
+              <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out text-gray-600">
+                <p class="pb-3 pt-2">We offer flexible pricing to match your needs — with both monthly and annual subscription options. You can also make one-time purchases of extra words if needed.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item border-b border-gray-300">
+              <div class="flex justify-between items-center text-sm md:text-base py-3 cursor-pointer">
+                <button class="text-left">What languages does Natural Write support?</button>
+                <button><i class="fa-solid fa-chevron-down text-gray-600 transition-transform duration-300"></i></button>
+              </div>
+              <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out text-gray-600">
+                <p class="pb-3 pt-2">We support over 50 languages including: English, Chinese (Simplified), Hindi, Spanish, Arabic, Bengali, Portuguese, Russian, Urdu, Indonesian, French, German, Japanese, Swahili, Marathi, Telugu, Turkish, Vietnamese, Korean, Tamil, Italian, Thai, Gujarati, Polish, Ukrainian, Persian, Malayalam, Chinese (Traditional), Afrikaans, Albanian, Bulgarian, Catalan, Croatian, Czech, Danish, Dutch, Estonian, Tagalog, Finnish, Greek, Hungarian, Kannada, Latvian, Lithuanian, Macedonian, Nepali, Norwegian, Punjabi, Romanian, Slovak, Slovene, Somali, Swedish, Welsh.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item border-b border-gray-300">
+              <div class="flex justify-between items-center text-sm md:text-base py-3 cursor-pointer">
+                <button class="text-left">I want to humanize a long essay. Is it possible?</button>
+                <button><i class="fa-solid fa-chevron-down text-gray-600 transition-transform duration-300"></i></button>
+              </div>
+              <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out text-gray-600">
+                <p class="pb-3 pt-2">Yes, it’s possible — but the word limit depends on your plan: Basic: 500 words/request, Pro: 1500 words/request, Ultra: 3000 words/request.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq-item border-b border-gray-300">
+              <div class="flex justify-between items-center text-sm md:text-base py-3 cursor-pointer">
+                <button class="text-left">I reached my word limit. How can I extend it?</button>
+                <button><i class="fa-solid fa-chevron-down text-gray-600 transition-transform duration-300"></i></button>
+              </div>
+              <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out text-gray-600">
+                <p class="pb-3 pt-2">You can buy extra words anytime — from 1,000 to 30,000 — with a one-time payment. No recurring fees. Your words stay in your account until you use them.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq-item border-b border-gray-300">
+              <div class="flex justify-between items-center text-sm md:text-base py-3 cursor-pointer">
+                <button class="text-left">Can I see previous humanizations?</button>
+                <button><i class="fa-solid fa-chevron-down text-gray-600 transition-transform duration-300"></i></button>
+              </div>
+              <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out text-gray-600">
+                <p class="pb-3 pt-2">Yes — your full humanization history is saved in your dashboard, including how many words you used.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 8 -->
+            <div class="faq-item border-b border-gray-300">
+              <div class="flex justify-between items-center text-sm md:text-base py-3 cursor-pointer">
+                <button class="text-left">How do I cancel my subscription?</button>
+                <button><i class="fa-solid fa-chevron-down text-gray-600 transition-transform duration-300"></i></button>
+              </div>
+              <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out text-gray-600">
+                <p class="pb-3 pt-2">You can cancel anytime in your account settings, or just email us at hello.naturalwrite@gmail.com — and we’ll handle it for you.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 9 -->
+            <div class="faq-item border-b border-gray-300">
+              <div class="flex justify-between items-center text-sm md:text-base py-3 cursor-pointer">
+                <button class="text-left">Does Google penalize AI-generated content?</button>
+                <button><i class="fa-solid fa-chevron-down text-gray-600 transition-transform duration-300"></i></button>
+              </div>
+              <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out text-gray-600">
+                <p class="pb-3 pt-2">Yes — Google can detect and penalize AI-generated text, especially low-quality SEO content. That’s why it’s important to humanize your writing before publishing.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    
+    <section class="bg-gradient-to-r from-orange-100 via-green-100 to-orange-100 py-10 md:py-16 px-4 md:px-16 text-center">
+      <h1 class="text-2xl md:text-4xl font-semibold mb-4 md:mb-8">Make Your Text Sound Human — Instantly</h1>
+      <p class="text-sm md:text-lg text-gray-500 mb-4 md:mb-8">Turn robotic, AI-generated content into clear, natural writing that sounds like a real person. Whether it's from <span class="md:hidden"></span>ChatGPT or another tool, NaturalWrite helps you bypass AI detectors and improve quality in just one click.</p>
+      <button onclick="window.location.href='login.html'"  class="border text-sm md:text-lg font-semibold px-7 md:py-2 py-3 rounded-xl bg-white text-green-600 hover:bg-gray-100 transition-all" id="start">Start for free</button>
+      <p class="text-xs md:text-sm text-gray-500 mt-2">500 words for free. No credit card required</p>
+    </section>
+
+    <section>
+      <footer class="px-4 md:px-10">
+        <p class="text-gray-500 border-b border-gray-300 pt-5 pb-5 text-sm">Natural Write is not a tool for academic dishonesty or cheating. <a class="underline" href="#">Read more</a></p>
+        
+        <div class="flex flex-col md:flex-row justify-between mt-5 md:mt-10 border-b border-gray-300 pb-5 md:pb-9 gap-8 md:gap-0">
+          <ul class="text-gray-500 w-full md:w-auto">
+            <li class="text-xl font-semibold text-black mb-3">Product</li>
+            <li><a href="#" class="hover:underline">Humanizer</a></li>
+            <li><a href="#" class="hover:underline">Pricing</a></li>
+            <li><a href="#" class="hover:underline">Earn with us</a></li>
+            <li><a href="#" class="hover:underline">IP Checker</a></li>
+          </ul>
+          
+          <ul class="text-gray-500 w-full md:w-auto md:pr-40">
+            <li class="text-xl font-semibold text-black mb-3">Resources</li>
+            <li><a href="#" class="hover:underline">Blog</a></li>
+            <li><a href="#" class="hover:underline">FAQ</a></li>
+          </ul>
+          
+          <ul class="text-gray-500 w-full md:w-auto md:pr-60" >
+            <li class="text-xl font-semibold text-black mb-3">Contact</li>
+            <li><a href="mailto:naturalwrite@gmail.com" class="hover:underline">naturalwrite@gmail.com</a></li>
+          </ul>
+        </div>
+        
+        <div class="flex flex-col md:flex-row justify-between items-center pt-3 pb-3">
+          <p class="font-bold text-gray-500 text-sm mb-2 md:mb-0">&copy; 2025 Natural Write</p>
+          <ul class="flex justify-center gap-5 text-gray-500 text-sm">
+            <li><a class="hover:underline" href="#">Privacy Policy</a></li>
+            <li><a class="hover:underline" href="#">Terms of Use</a></li>
+          </ul>
+        </div>
+      </footer>
+    </section>
+
+    
+    </body>
+</html>
